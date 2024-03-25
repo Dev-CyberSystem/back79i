@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "8d49ab47-f246-43ba-9c65-7e5b9f46a7d3",
+		"name": "79i",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26767695",
+		"_collection_link": "https://www.postman.com/restless-robot-203448/workspace/rolling-code-school/collection/26767695-8d49ab47-f246-43ba-9c65-7e5b9f46a7d3?action=share&source=collection_link&creator=26767695"
+	},
+	"item": [
+		{
+			"name": "getAllProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/productos",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"productos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/producto/:id",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"8510b6bc-708e-4888-94bc-c69795c5c206\",\r\n    \"nombre\": \"Cafe Colombiano\",\r\n    \"categoria\": \"Cafe\",\r\n    \"precio\": 25,\r\n    \"imagen\":\r\n      \"https://www.greenstyle.com.ar/wp-content/uploads/2020/07/Cafetera-Market-Bra-12.jpg\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/product",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:4000",
+			"type": "string"
+		}
+	]
+}
