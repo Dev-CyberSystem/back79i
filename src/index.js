@@ -24,6 +24,10 @@ app.use("/api", comprobacionJwt, privateRouter)
 
 app.use(ProductRoutes)
 
+app.get("/", (req, res)=>{
+    res.send("Bienvenido a la API de la comision 79i")
+})
+
 app.listen(PORT, async()=>{
     console.log(`La aplicación esta escuchando el puerto ${PORT}`)
 })
