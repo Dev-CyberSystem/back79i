@@ -57,7 +57,7 @@ const registroUsuario = async (req, res) => {
       apellido,
       email,
       password: passwordHash,
-      admin
+      admin,
     });
     const user = await newUser.save();
     res.json(user);
@@ -99,14 +99,16 @@ const loginUsuario = async (req, res) => {
         id: user._id,
         nombre: user.nombre,
         apellido: user.apellido,
-        admin: user.admin
+        admin: user.admin,
       },
       process.env.SECRET, // pasamos la clave secreta
 
       { expiresIn: 15000 } // tiempo de expiración del token
     );
 
-    res.header(token).json({ message: "aqui tienes tu token, buen hombre", data: { token }  });
+    res
+      .header("Authorization", `Bearer ${token}`)
+      .json({ error: null, data: { token } });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Error en el servidor" });

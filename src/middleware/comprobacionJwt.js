@@ -6,7 +6,8 @@ const comprobacionJwt = (req, res, next) => {
   if (!token) {
     return res.status(401).json({ message: "No hay token" });
   }
-  const verificacionToken = jwt.verify(token, process.env.SECRET);
+  try {
+    const verificacionToken = jwt.verify(token, process.env.SECRET);
   req.usuario = verificacionToken;
 
   if (verificacionToken.admin) {
@@ -15,6 +16,12 @@ const comprobacionJwt = (req, res, next) => {
   } else {
     return res.status(401).json({ message: "No tienes permisos" });
   }
+    
+  } catch (error) {
+    console.error("Error al verificar el token:", error);
+    return res.status(401).send("Acceso denegado, token no válido");
+  }
+  
 };
 
 export default comprobacionJwt;
